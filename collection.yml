@@ -1,0 +1,400 @@
+openapi: 3.0.0
+info:
+  title: Json2OpenAPI Copy
+  description: Collection to test path parameters
+  version: 1.0.0
+servers:
+  - url: http://{{base_usl}}{{api}}
+paths:
+  /courier:
+    post:
+      tags:
+        - General
+      summary: Create courier
+      description: Obtain a list of users descriptions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: []
+              example:
+                info:
+                  - firstname: '22'
+                    lastname: '223'
+                    age:
+                      ok: '2'
+                      'no':
+                        - aa
+                location:
+                  lat: '22'
+                  long: '222'
+                  address:
+                    type: name
+                    wat:
+                      aa: '22'
+                    and:
+                      - the: aa
+                        theT:
+                          at: ss
+                    bee:
+                      - aa
+                location2:
+                  lat: '22'
+                  long: '222'
+                  address:
+                    type: name
+                    wat:
+                      aa: '22'
+                    and:
+                      - the: aa
+                        theT:
+                          at: ss
+                    bee:
+                      - aa
+              properties:
+                info:
+                  type: array
+                  default: '11'
+                  description: |-
+                    A 
+
+                     Example: 1
+                  items:
+                    required:
+                      - age
+                    properties:
+                      firstname:
+                        description: |-
+                          B 
+
+                           Example: 2
+                        type: string
+                        default: '22'
+                      lastname:
+                        description: |-
+                          C 
+
+                           Example: 3
+                        type: string
+                        default: '33'
+                      age:
+                        type: object
+                        default: '44'
+                        description: |-
+                          D 
+
+                           Example: 4
+                        allOf:
+                          - required:
+                              - ok
+                            properties:
+                              ok:
+                                description: |-
+                                  E 
+
+                                   Example: min=12,max=202
+                                type: string
+                                default: E
+                                enum:
+                                  - '5'
+                              'no':
+                                type: Array of strings
+                                default: '66'
+                                description: |-
+                                  F 
+
+                                   Example: 6
+                                items:
+                                  required: []
+                                  properties: {}
+                location:
+                  type: object
+                  default: '77'
+                  description: |-
+                    desc 
+
+                     Example: 7
+                  allOf:
+                    - required:
+                        - lat
+                        - long
+                      properties:
+                        lat:
+                          description: |
+                            (a 
+                          type: string
+                          default: latttt
+                          enum:
+                            - '8'
+                        long:
+                          description: |-
+                            longggg 
+
+                             Example: 9
+                          type: string
+                          default: '99'
+                        address:
+                          type: object
+                          default: '1010'
+                          description: |-
+                            address 
+
+                             Example: 10
+                          allOf:
+                            - required:
+                                - type
+                                - wat
+                              properties:
+                                type:
+                                  description: |-
+                                    tyue 
+
+                                     Example: 11
+                                  type: string
+                                  default: aa
+                                wat:
+                                  type: object
+                                  default: bb
+                                  description: |-
+                                    wat 
+
+                                     Example: 12
+                                  allOf:
+                                    - required:
+                                        - aa
+                                      properties:
+                                        aa:
+                                          description: |-
+                                            aa 
+
+                                             Example: 13
+                                          type: string
+                                          default: cc
+                                and:
+                                  type: array
+                                  default: dd
+                                  description: |-
+                                    aaaa 
+
+                                     Example: 14
+                                  items:
+                                    required: []
+                                    properties:
+                                      the:
+                                        description: |-
+                                          king 
+
+                                           Example: 15
+                                        type: string
+                                        default: ee
+                                      theT:
+                                        type: object
+                                        default: ff
+                                        description: |-
+                                          king1 
+
+                                           Example: 16
+                                        allOf:
+                                          - required: []
+                                            properties:
+                                              at:
+                                                description: |-
+                                                  king2 
+
+                                                   Example: 17
+                                                type: string
+                                                default: gg
+                                bee:
+                                  type: Array of strings
+                                  default: hh
+                                  description: |-
+                                    bee 
+
+                                     Example: 18
+                                  items:
+                                    required: []
+                                    properties: {}
+                location2:
+                  type: object
+                  default: ii
+                  description: |-
+                    location2 desc 
+
+                     Example: 19
+                  allOf:
+                    - required:
+                        - lat
+                        - long
+                      properties:
+                        lat:
+                          description: |-
+                            latttt1 
+
+                             Example: 20
+                          type: string
+                          default: jj
+                        long:
+                          description: |-
+                            longggg1 
+
+                             Example: 21
+                          type: string
+                          default: kk
+                        address:
+                          type: object
+                          default: ll
+                          description: |-
+                            address1 
+
+                             Example: 22
+                          allOf:
+                            - required:
+                                - type
+                                - wat
+                              properties:
+                                type:
+                                  description: |-
+                                    tyue1 
+
+                                     Example: 23
+                                  type: string
+                                  default: mm
+                                wat:
+                                  type: object
+                                  default: nn
+                                  description: |-
+                                    wat1 
+
+                                     Example: 24
+                                  allOf:
+                                    - required:
+                                        - aa
+                                      properties:
+                                        aa:
+                                          description: |-
+                                            aa1 
+
+                                             Example: 25
+                                          type: string
+                                          default: oo
+                                and:
+                                  type: array
+                                  default: pp
+                                  description: |-
+                                    aaaa1 
+
+                                     Example: 26
+                                  items:
+                                    required: []
+                                    properties:
+                                      the:
+                                        description: |-
+                                          king1 
+
+                                           Example: 27
+                                        type: string
+                                        default: qq
+                                      theT:
+                                        type: object
+                                        default: rr
+                                        description: |-
+                                          king11 
+
+                                           Example: 28
+                                        allOf:
+                                          - required: []
+                                            properties:
+                                              at:
+                                                description: |-
+                                                  king21 
+
+                                                   Example: 29
+                                                type: string
+                                                default: ss
+                                bee:
+                                  type: Array of strings
+                                  default: tt
+                                  description: |-
+                                    bee1 
+
+                                     Example: 30
+                                  items:
+                                    required: []
+                                    properties: {}
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: Content-Type
+          content:
+            application/json:
+              schema:
+                type: object
+                required: []
+                example:
+                  example:
+                    meta:
+                      code: '200'
+                      type: Created
+                      message: The request was successfully processed.
+                    data:
+                      id: string
+                      slug: scg
+                      info:
+                        name: scg
+                        time:
+                          created_at: '2022-02-12T04:30:30.359Z'
+                      is_deleted: false
+                properties:
+                  id:
+                    description: |-
+                      res a 
+
+                       Example: a
+                    type: number
+                  slug:
+                    description: |-
+                      res b 
+
+                       Example: b
+                    type: string
+                  info:
+                    type: object
+                    description: |-
+                      res c 
+
+                       Example: c
+                    allOf:
+                      - required: []
+                        properties:
+                          name:
+                            description: |-
+                              res d 
+
+                               Example: d
+                            type: string
+                          time:
+                            type: object
+                            description: |-
+                              res e 
+
+                               Example: e
+                            allOf:
+                              - required: []
+                                properties:
+                                  created_at:
+                                    description: |-
+                                      res f 
+
+                                       Example: f
+                                    type: string
+                  is_deleted:
+                    description: |-
+                      res g 
+
+                       Example: g
+                    type: boolean

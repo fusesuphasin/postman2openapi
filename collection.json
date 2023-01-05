@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "efb81bb9-d723-41f7-b577-88735880a53a",
+		"name": "Json2OpenAPI Copy",
+		"description": "Collection to test path parameters",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18395872"
+	},
+	"item": [
+		{
+			"name": "Create courier",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"info\": [\r\n        {\r\n            \"firstname\": \"22\",\r\n            \"lastname\": \"223\",\r\n            \"age\": {\r\n                \"ok\": \"2\",\r\n                \"no\": [\r\n                    \"aa\"\r\n                ]\r\n            }\r\n        }\r\n    ],\r\n    \"location\": {\r\n        \"lat\": \"22\",\r\n        \"long\": \"222\",\r\n        \"address\": {\r\n            \"type\": \"name\",\r\n            \"wat\": {\r\n                \"aa\": \"22\"\r\n            },\r\n            \"and\": [\r\n                {\r\n                    \"the\": \"aa\",\r\n                    \"theT\": {\r\n                        \"at\": \"ss\"\r\n                    }\r\n                }\r\n            ],\r\n            \"bee\": [\r\n                \"aa\"\r\n            ]\r\n        }\r\n    },\r\n    \"location2\": {\r\n        \"lat\": \"22\",\r\n        \"long\": \"222\",\r\n        \"address\": {\r\n            \"type\": \"name\",\r\n            \"wat\": {\r\n                \"aa\": \"22\"\r\n            },\r\n            \"and\": [\r\n                {\r\n                    \"the\": \"aa\",\r\n                    \"theT\": {\r\n                        \"at\": \"ss\"\r\n                    }\r\n                }\r\n            ],\r\n            \"bee\": [\r\n                \"aa\"\r\n            ]\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_usl}}{{api}}/courier",
+					"host": [
+						"{{base_usl}}{{api}}"
+					],
+					"path": [
+						"courier"
+					]
+				},
+				"description": "Obtain a list of users descriptions\n\n# params-postman-to-openapi\n\n| object | name | type | required | properties | validate | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| path | id | string | true |  |  | This is just a user identifier | 123 |  |  |\n\n# body-postman-to-openapi\n\n| object | name | type | required | omitempty | properties | validate | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  | info | array | false |  |  |  | A | 1 | 11 |  |\n| info | firstname | string | false |  |  |  | B | 2 | 22 |  |\n| info | lastname | string | false |  | minimum=10,maximum=100 | min=1,max=20 | C | 3 | 33 |  |\n| info | age | object | true |  | minimum=10,pattern=\"/d22+\" |  | D | 4 | 44 |  |\n| info.age | ok | string | true |  | pattern=/a\\[a-z\\]{2,4}/ | (ab))((c) | E | min=12,max=202 | E | 5 |\n| info.age | no | array | false |  | pattern=\"/d+\",minimum=10 |  | F | 6 | 66 |  |\n|  | location | object | false |  | aaa=10,pattern=\"/d22+\" |  | desc | 7 | 77 |  |\n| location | lat | string | true |  | pattern=/((a) | (ab))((c) | (a |  | latttt | 8 |\n| location | long | string | true |  | pattern=\"/a\\[a-z\\]{2,4}/\" |  | longggg | 9 | 99 |  |\n| location | address | object | false |  |  |  | address | 10 | 1010 |  |\n| location.address | type | string | true |  | pattern=\\[/a\\[a-z\\]{2,4}/\\] |  | tyue | 11 | aa |  |\n| location.address | wat | object | true |  |  |  | wat | 12 | bb |  |\n| location.address.wat | aa | string | true |  |  |  | aa | 13 | cc |  |\n| location.address | and | array | false |  |  |  | aaaa | 14 | dd |  |\n| location.address.and | the | string | false |  |  |  | king | 15 | ee |  |\n| location.address.and | theT | object | false |  |  |  | king1 | 16 | ff |  |\n| location.address.and.theT | at | string | false |  |  |  | king2 | 17 | gg |  |\n| location.address | bee | array | false |  |  |  | bee | 18 | hh |  |\n|  | location2 | object | false | false |  |  | location2 desc | 19 | ii |  |\n| location2 | lat | string | true |  |  |  | latttt1 | 20 | jj |  |\n| location2 | long | string | true |  |  |  | longggg1 | 21 | kk |  |\n| location2 | address | object | false |  |  |  | address1 | 22 | ll |  |\n| location2.address | type | string | true |  |  |  | tyue1 | 23 | mm |  |\n| location2.address | wat | object | true |  |  |  | wat1 | 24 | nn |  |\n| location2.address.wat | aa | string | true |  |  |  | aa1 | 25 | oo |  |\n| location2.address | and | array | false |  |  |  | aaaa1 | 26 | pp |  |\n| location2.address.and | the | string | false |  |  |  | king1 | 27 | qq |  |\n| location2.address.and | theT | object | false |  |  |  | king11 | 28 | rr |  |\n| location2.address.and.theT | at | string | false |  |  |  | king21 | 29 | ss |  |\n| location2.address | bee | array | false |  |  |  | bee1 | 30 | tt |  |\n\n# response-postman-to-openapi\n\n| object | name | type | omitempty | properties | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  | id | number |  |  | res a | a |  |  |\n|  | slug | string |  |  | res b | b |  |  |\n|  | info | object |  |  | res c | c |  |  |\n| info | name | string |  |  | res d | d |  |  |\n| info | time | object |  |  | res e | e |  |  |\n| info.time | created_at | string |  |  | res f | f |  |  |\n|  | is_deleted | boolean |  |  | res g | g |  |  |"
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"name\",\r\n    \"logo_url\": \"example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_usl}}{{api}}/courier/:id",
+							"host": [
+								"{{base_usl}}{{api}}"
+							],
+							"path": [
+								"courier",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"meta\": {\n        \"code\": \"200\",\n        \"type\": \"Created\",\n        \"message\": \"The request was successfully processed.\"\n    },\n    \"data\": {\n        \"id\": \"string\",\n        \"slug\": \"scg\",\n        \"info\": {\n            \"name\": \"scg\",\n            \"time\": {\n                \"created_at\": \"2022-02-12T04:30:30.359Z\"\n            }\n        },\n        \"is_deleted\": false\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
