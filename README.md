@@ -1,117 +1,197 @@
-![logo](./docs/assets/img/logoBanner.png)
+# Postman to Openapi 
 
-# [postman-to-openapi](https://joolfe.github.io/postman-to-openapi/)
+## Command 
+    ```
+    run `node main.js
+    ```
 
-🛸 Convert Postman Collection v2.1/v2.0 to OpenAPI v3.0.
+### Documentation Markdown 
 
-Or in other words, transform [this specification](https://schema.getpostman.com/json/collection/v2.1.0/collection.json) and [also this](https://schema.getpostman.com/json/collection/v2.0.0/collection.json) to [this one](http://spec.openapis.org/oas/v3.0.3.html)
+  `Prepared`
+  ```
+    descriptions
 
-[![build](https://github.com/joolfe/postman-to-openapi/workflows/Build/badge.svg)](https://github.com/joolfe/postman-to-openapi/actions)
-[![codecov](https://codecov.io/gh/joolfe/postman-to-openapi/branch/master/graph/badge.svg)](https://codecov.io/gh/joolfe/postman-to-openapi)
-[![npm version](https://img.shields.io/npm/v/postman-to-openapi
-)](https://www.npmjs.com/package/postman-to-openapi)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
-[![CodeQL](https://github.com/joolfe/postman-to-openapi/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/joolfe/postman-to-openapi/actions/workflows/codeql-analysis.yml)
+    # params-postman-to-openapi
 
-## Installation
+    | object | name | type | required | properties | validate | description | example | default | enum |
+    | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
-Using `npm`:
+    # body-postman-to-openapi
 
-```bash
-npm i postman-to-openapi
-```
+    | object | name | type | required | omitempty | properties | validate | description | example | default | enum |
+    | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
-Using `yarn`:
+    # response-postman-to-openapi
 
-```bash
-yarn add postman-to-openapi
-```
+    | object | name | type | omitempty | properties | description | example | default | enum |
+    | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+  ```
 
-To install as a `cli` just
+ - การทำ Markdown
+    จาก Prepared ใน 1 request จะมี Header 4 ตัว
 
-```bash
-npm i postman-to-openapi -g
-```
+    ต้องใส่คำเหล่านี้อยู่ใน `Documentation` ทุกครั้งถ้าต้องการทำ `Markdown`
+    (# params-postman-to-openapi)
+    (# body-postman-to-openapi)
+    (# response-postman-to-openapi)
 
-## Quick Usage
+    1. descriptions
+        พิมพ์คำอธิบายที่ต้องการของ request แทนที่คำ `descriptions`
 
-As a library
+    2. params-postman-to-openapi
+        อธิบาย params มี column 10 ตัว
+        
+        ``` 
+        | object | name | type | required | properties | validate | description | example | default | enum |
+        ```
+        
+        **object** : `path`
+        **name** : ชื่อ key ของ params 
+        **type** : ชื่อ ประเภทข้อมูลของ key ของ params 
+        **required** : required key ของ params หรือไม่ `true = required, false = not required`
+        **properties** : คุณสมบัติของ key ของ params 
+        **validate** : ชื่อ key ของ params `ของ go validator ใช้ทำ gogengo`
+        **description** : คำอธิบาย key ของ params 
+        **example** : ตัวอย่าง key ของ params 
+        **default** : คำอธิบาย key ของ params 
+        **enum** : ค่าที่รองรับของ key ของ params 
 
-```js
-// Require Package
-const postmanToOpenApi = require('postman-to-openapi')
+    3. body-postman-to-openapi
 
-// Postman Collection Path
-const postmanCollection = './path/to/postman/collection.json'
-// Output OpenAPI Path
-const outputFile = './api/collection.yml'
+        ```
+        | object | name | type | required | omitempty | properties | validate | description | example | default | enum |
+        ```
 
-// Async/await
-try {
-    const result = await postmanToOpenApi(postmanCollection, outputFile, { defaultTag: 'General' })
-    // Without save the result in a file
-    const result2 = await postmanToOpenApi(postmanCollection, null, { defaultTag: 'General' })
-    console.log(`OpenAPI specs: ${result}`)
-} catch (err) {
-    console.log(err)
-}
+        **object** : path ของ field
+        **name** : ชื่อ key ของ field 
+        **type** : ชื่อ ประเภทข้อมูลของ key ของ field 
+        **required** : required key ของ field หรือไม่ `true = required, false = not required`
+        **omitempty** : คุณสมบัติของ key ของ field `ใช้ทำ gogengo true = omitempty, false = not omitempty`
+        **properties** : คุณสมบัติของ key ของ field 
+           - title
+           - multipleOf
+           - maximum
+           - exclusiveMaximum
+           - minimum
+           - exclusiveMinimum
+           - maxLength
+           - minLength
+           - pattern 
+           - maxItems
+           - minItems
+           - uniqueItems
+           - maxProperties
+           - minProperties
+           - enum
+        **validate** : ชื่อ key ของ field `ของ go validator ใช้ทำ gogengo`
+        **description** : คำอธิบาย key ของ field 
+        **example** : ตัวอย่าง key ของ field 
+        **default** : คำอธิบาย key ของ field 
+        **enum** : ค่าที่รองรับของ key ของ field 
 
-// Promise callback style
-postmanToOpenApi(postmanCollection, outputFile, { defaultTag: 'General' })
-    .then(result => {
-        console.log(`OpenAPI specs: ${result}`)
-    })
-    .catch(err => {
-        console.log(err)
-    })
-```
+    4. response-postman-to-openapi
 
-As a cli
+        ```
+        | object | name | type | omitempty | properties | description | example | default | enum |
+        ```
 
-```bash
-p2o ./path/to/PostmantoCollection.json -f ./path/to/result.yml -o ./path/to/options.json
-```
+        **object** : path ของ field
+        **name** : ชื่อ key ของ field 
+        **type** : ชื่อ ประเภทข้อมูลของ key ของ field 
+        **omitempty** : คุณสมบัติของ key ของ field `ใช้ทำ gogengo true = omitempty, false = not omitempty`
+        **properties** : คุณสมบัติของ key ของ field 
+           - title
+           - multipleOf
+           - maximum
+           - exclusiveMaximum
+           - minimum
+           - exclusiveMinimum
+           - maxLength
+           - minLength
+           - pattern 
+           - maxItems
+           - minItems
+           - uniqueItems
+           - maxProperties
+           - minProperties
+           - enum
+        **description** : คำอธิบาย key ของ field 
+        **example** : ตัวอย่าง key ของ field 
+        **default** : คำอธิบาย key ของ field 
+        **enum** : ค่าที่รองรับของ key ของ field 
 
-## Cli Demo
+    - Example
+        - request url
+        ```
+        /pet/info/:language
+        ```
 
-![cli demo gif](./docs/assets/img/demo.gif)
+        - request
+        ```
+            {
+                "pet": "dog",
+                "info": {
+                    "name": "pizza",
+                    "age": 1.2,
+                    "behavior": [
+                        "freindly"
+                    ]
+                },
+                "owner": [
+                    {
+                        "name": "santa",
+                        "age": 30,
+                        "address": {
+                            "address_1": "174 wo wo town",
+                            "city": "dao namex",
+                            "country": "wakanda"
+                        }
+                    }
+                ],
+                "alive": true
+            }
+        ```
 
-## Documentation
 
-All features, usage instructions and help can be found in the [Documentation page](https://joolfe.github.io/postman-to-openapi/)
+        - response (ต้องมี data{} )
+        ```
+            {
+                "meta": {
+                    "code": "200",
+                    "type": "OK",
+                    "message": "The request was successfully processed.",
+                    "error": [
+                        {
+                            "path": "",
+                            "info": ""
+                        }
+                    ]
+                },
+                "data": {
+                    "id": "string",
+                    "pet": "dog",
+                    "info": {
+                        "name": "pizza",
+                        "age": 1.2,
+                        "behavior": [
+                            "freindly"
+                        ]
+                    },
+                    "owner": [
+                        {
+                            "name": "santa",
+                            "age": 30,
+                            "address": {
+                                "address_1": "174 wo wo town",
+                                "city": "dao namex",
+                                "country": "wakanda"
+                            }
+                        }
+                    ],
+                    "alive": true,
+                    "created_at": "2022-02-12T04:30:30.359Z"
+                }
+            }
+        ```
 
-## Development
-
-This project use for development:
-
-- Node.js v12.x to v17.x
-- [Standard JS](https://standardjs.com/) rules to maintain clean code.
-- Use [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) for commit messages.
-- Test with [mocha.js](https://mochajs.org/).
-
-Use the scripts in `package.json`:
-
-- `test:unit`: Run mocha unit test.
-- `test`: Execute `test:lint` plus code coverage.
-- `lint`: Execute standard lint to review errors in code.
-- `lint:fix`: Execute standard lint and automatically fix errors.
-- `changelog`: Update changelog automatically.
-
-Steps to generate the gif demo:
-
-- Install terminalizer `npm install -g terminalizer`
-- Start a recording using `terminalizer record demo -d 'zsh'`
-- Stop recording with `Ctrl+D`
-- Check demo with `terminalizer play demo`
-- Adjust delays in `demo.yml`, change `rows` to 15 (is the height) and anonymize terminal session.
-- Generate the gif with `terminalizer render demo`
-
-[Husky](https://www.npmjs.com/package/husky) is configured to avoid push incorrect content to git.
-
-## Tags
-
-`Nodejs` `Javascript` `OpenAPI` `Postman` `Newman` `Collection` `Transform` `Convert`
-
-## License
-
-See the [LICENSE](LICENSE.txt) file.
+        - markdown 
