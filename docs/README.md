@@ -36,10 +36,10 @@
     (# body-postman-to-openapi)
     (# response-postman-to-openapi)
 
-    1 descriptions
+    1.descriptions
         พิมพ์คำอธิบายที่ต้องการของ request แทนที่คำ `descriptions`
 
-    2 params-postman-to-openapi
+    2.params-postman-to-openapi
         อธิบาย params มี column 10 ตัว
         
         ``` 
@@ -72,7 +72,7 @@
       -  **default** : คำอธิบาย key ของ params 
       -  **enum** : ค่าที่รองรับของ key ของ params 
 
-    3 body-postman-to-openapi
+    3.body-postman-to-openapi
 
         ```
         | object | name | type | required | omitempty | properties | validate | description | example | default | enum |
@@ -105,7 +105,7 @@
       -  **default** : คำอธิบาย key ของ field 
       -  **enum** : ค่าที่รองรับของ key ของ field 
 
-    4 response-postman-to-openapi
+    4.response-postman-to-openapi
        ถ้าต้องการ response code มากกว่าหนึ่งให้ขั้นด้วย  (#### status-code)
 
         ```
