@@ -45,16 +45,16 @@
         | object | name | type | required | properties | validate | description | example | default | enum |
         ```
         
-        **object** : `path`
-        **name** : ชื่อ key ของ params 
-        **type** : ชื่อ ประเภทข้อมูลของ key ของ params 
-        **required** : required key ของ params หรือไม่ `true = required, false = not required`
-        **properties** : คุณสมบัติของ key ของ params 
-        **validate** : ชื่อ key ของ params `ของ go validator ใช้ทำ gogengo`
-        **description** : คำอธิบาย key ของ params 
-        **example** : ตัวอย่าง key ของ params 
-        **default** : คำอธิบาย key ของ params 
-        **enum** : ค่าที่รองรับของ key ของ params 
+      -  **object** : `path`
+      -  **name** : ชื่อ key ของ params 
+      -  **type** : ชื่อ ประเภทข้อมูลของ key ของ params 
+      -  **required** : required key ของ params หรือไม่ `true = required, false = not required`
+      -  **properties** : คุณสมบัติของ key ของ params 
+      -  **validate** : ชื่อ key ของ params `ของ go validator ใช้ทำ gogengo`
+      -  **description** : คำอธิบาย key ของ params 
+      -  **example** : ตัวอย่าง key ของ params 
+      -  **default** : คำอธิบาย key ของ params 
+      -  **enum** : ค่าที่รองรับของ key ของ params 
 
     3. body-postman-to-openapi
 
@@ -62,12 +62,12 @@
         | object | name | type | required | omitempty | properties | validate | description | example | default | enum |
         ```
 
-        **object** : path ของ field
-        **name** : ชื่อ key ของ field 
-        **type** : ชื่อ ประเภทข้อมูลของ key ของ field 
-        **required** : required key ของ field หรือไม่ `true = required, false = not required`
-        **omitempty** : คุณสมบัติของ key ของ field `ใช้ทำ gogengo true = omitempty, false = not omitempty`
-        **properties** : คุณสมบัติของ key ของ field 
+      -  **object** : path ของ field
+      -  **name** : ชื่อ key ของ field 
+      -  **type** : ชื่อ ประเภทข้อมูลของ key ของ field 
+      -  **required** : required key ของ field หรือไม่ `true = required, false = not required`
+      -  **omitempty** : คุณสมบัติของ key ของ field `ใช้ทำ gogengo true = omitempty, false = not omitempty`
+      -  **properties** : คุณสมบัติของ key ของ field 
            - title
            - multipleOf
            - maximum
@@ -83,11 +83,11 @@
            - maxProperties
            - minProperties
            - enum
-        **validate** : ชื่อ key ของ field `ของ go validator ใช้ทำ gogengo`
-        **description** : คำอธิบาย key ของ field 
-        **example** : ตัวอย่าง key ของ field 
-        **default** : คำอธิบาย key ของ field 
-        **enum** : ค่าที่รองรับของ key ของ field 
+      -  **validate** : ชื่อ key ของ field `ของ go validator ใช้ทำ gogengo`
+      -  **description** : คำอธิบาย key ของ field 
+      -  **example** : ตัวอย่าง key ของ field 
+      -  **default** : คำอธิบาย key ของ field 
+      -  **enum** : ค่าที่รองรับของ key ของ field 
 
     4. response-postman-to-openapi
 
@@ -95,11 +95,11 @@
         | object | name | type | omitempty | properties | description | example | default | enum |
         ```
 
-        **object** : path ของ field
-        **name** : ชื่อ key ของ field 
-        **type** : ชื่อ ประเภทข้อมูลของ key ของ field 
-        **omitempty** : คุณสมบัติของ key ของ field `ใช้ทำ gogengo true = omitempty, false = not omitempty`
-        **properties** : คุณสมบัติของ key ของ field 
+      -  **object** : path ของ field
+      -  **name** : ชื่อ key ของ field 
+      -  **type** : ชื่อ ประเภทข้อมูลของ key ของ field 
+      -  **omitempty** : คุณสมบัติของ key ของ field `ใช้ทำ gogengo true = omitempty, false = not omitempty`
+      -  **properties** : คุณสมบัติของ key ของ field 
            - title
            - multipleOf
            - maximum
@@ -115,10 +115,10 @@
            - maxProperties
            - minProperties
            - enum
-        **description** : คำอธิบาย key ของ field 
-        **example** : ตัวอย่าง key ของ field 
-        **default** : คำอธิบาย key ของ field 
-        **enum** : ค่าที่รองรับของ key ของ field 
+      -  **description** : คำอธิบาย key ของ field 
+      -  **example** : ตัวอย่าง key ของ field 
+      -  **default** : คำอธิบาย key ของ field 
+      -  **enum** : ค่าที่รองรับของ key ของ field 
 
     - Example
         - request url
