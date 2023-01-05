@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "efb81bb9-d723-41f7-b577-88735880a53a",
+		"name": "Pets",
+		"description": "Collection to test path parameters",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18395872"
+	},
+	"item": [
+		{
+			"name": "Create a pet infomation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pet\": \"dog\",\r\n    \"info\": {\r\n        \"name\": \"pizza\",\r\n        \"age\": 1.2,\r\n        \"behavior\": [\r\n            \"freindly\"\r\n        ]\r\n    },\r\n    \"owner\": [\r\n        {\r\n            \"name\": \"santa\",\r\n            \"age\": 30,\r\n            \"address\": {\r\n                \"address_1\": \"174 wo wo town\",\r\n                \"city\": \"dao namex\",\r\n                \"country\": \"wakanda\"\r\n            }\r\n        }\r\n    ],\r\n    \"alive\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_usl}}{{api}}/pet/info/countries/:counties/language/:language",
+					"host": [
+						"{{base_usl}}{{api}}"
+					],
+					"path": [
+						"pet",
+						"info",
+						"countries",
+						":counties",
+						"language",
+						":language"
+					],
+					"variable": [
+						{
+							"key": "counties",
+							"value": null
+						},
+						{
+							"key": "language",
+							"value": null
+						}
+					]
+				},
+				"description": "create infomation of pet\n\n# params-postman-to-openapi\n\n| object | name | type | required | properties | validate | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  | counties | string | true | minimum=10,maximum=100 |  | params | cba | tha | tha,eng |\n|  | language | string | true | minimum=1,maximum=10 |  | hello params | abc | thai | thai,english |\n\n# body-postman-to-openapi\n\n| object | name | type | required | omitempty | properties | validate | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  | pet | string | true |  | minimum=1,maximum=10 | min=1,max=10 | pet type | dog |  | dog,cat,bird |\n|  | info | object | false |  |  |  |  |  |  |  |\n| info | name | string | true |  | pattern=\\[a-z\\] |  | name of pet | pizza |  |  |\n| info | age | float | false |  | title=title_example |  |  |  |  |  |\n| info | behavior | array | false |  |  |  |  | freindly, freindly,  <br>freindly |  |  |\n|  | owner | array | false |  |  |  |  |  |  |  |\n| owner | name | string | false |  |  |  |  |  |  |  |\n| owner | age | integer | false |  |  |  |  |  |  |  |\n| owner | address | object | false |  |  |  |  |  |  |  |\n| owner.adress | address_1 | string | false |  |  |  |  |  |  |  |\n| owner.adress | city | string | false |  |  |  |  |  |  |  |\n| owner.adress | country | string | false |  |  |  |  |  |  |  |\n|  | alive | boolean | false |  |  |  |  |  |  |  |\n\n# response-postman-to-openapi\n\n| code | object | name | type | omitempty | properties | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 201 |  | meta | object |  |  |  |  |  |  |\n|  | meta | code | string |  |  |  |  |  |  |\n|  | meta | type | string |  |  |  |  |  |  |\n|  | meta | errors | array |  |  |  |  |  |  |\n|  | meta.errors | path | string |  |  |  |  |  |  |\n|  | meta.errors | info | string |  |  |  |  |  |  |\n|  |  | data | object |  |  |  |  |  |  |\n|  | data | id | string |  |  |  |  |  |  |\n|  | data | pet | string |  |  |  |  |  |  |\n|  | data | info | object |  |  |  |  |  |  |\n|  | data.info | name | string |  |  |  |  |  |  |\n|  | data.info | age | float |  |  |  |  |  |  |\n|  | data.info | behavior | array |  |  |  |  |  |  |\n|  | data | owner | array |  |  |  |  |  |  |\n|  | data.owner | name | string |  |  |  |  |  |  |\n|  | data.owner | age | integer |  |  |  |  |  |  |\n|  | data.owner | address | object |  |  |  |  |  |  |\n|  | data.owner.address | address_1 | string |  |  |  |  |  |  |\n|  | data.owner.address | city | string |  |  |  |  |  |  |\n|  | data.owner.address | country | string |  |  |  |  |  |  |\n|  | data | alive | boolean |  |  |  |  |  |  |\n|  | data | created_at | string |  |  |  |  |  |  |\n\n#### status-code\n\n| code | object | name | type | omitempty | properties | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 400 |  | meta | object |  |  |  |  |  |  |\n|  | meta | code | string |  |  | error 400 |  |  |  |\n|  | meta | type | string |  |  |  | 400 |  |  |\n|  | meta | errors | array |  |  |  |  |  |  |\n|  | meta.errors | path | string |  |  |  |  |  |  |\n|  | meta.errors | info | string |  |  |  |  |  |  |\n|  |  | data | object |  |  |  |  |  |  |\n\n#### status-code\n\n| code | object | name | type | omitempty | properties | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 500 |  | meta | object |  |  |  |  |  |  |\n|  | meta | code | string |  |  | error 500 |  |  |  |\n|  | meta | type | string |  |  |  | 500 |  |  |\n|  | meta | errors | array |  |  |  |  |  |  |\n|  | meta.errors | path | string |  |  |  |  |  |  |\n|  | meta.errors | info | string |  |  |  |  |  |  |\n|  |  | data | object |  |  |  |  |  |  |"
+			},
+			"response": [
+				{
+					"name": "201",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"name\",\r\n    \"logo_url\": \"example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_usl}}{{api}}/courier/:id",
+							"host": [
+								"{{base_usl}}{{api}}"
+							],
+							"path": [
+								"courier",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"meta\": {\n        \"code\": \"201\",\n        \"type\": \"Create\",\n        \"message\": \"The request was successfully processed.\",\n        \"error\": [\n            {\n                \"path\": \"\",\n                \"info\": \"\"\n            }\n        ]\n    },\n    \"data\": {\n        \"id\": \"string\",\n        \"pet\": \"dog\",\n        \"info\": {\n            \"name\": \"pizza\",\n            \"age\": 1.2,\n            \"behavior\": [\n                \"freindly\"\n            ]\n        },\n        \"owner\": [\n            {\n                \"name\": \"santa\",\n                \"age\": 30,\n                \"address\": {\n                    \"address_1\": \"174 wo wo town\",\n                    \"city\": \"dao namex\",\n                    \"country\": \"wakanda\"\n                }\n            }\n        ],\n        \"alive\": true,\n        \"created_at\": \"2022-02-12T04:30:30.359Z\"\n    }\n}"
+				},
+				{
+					"name": "400",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"name\",\r\n    \"logo_url\": \"example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_usl}}{{api}}/courier/:id",
+							"host": [
+								"{{base_usl}}{{api}}"
+							],
+							"path": [
+								"courier",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"meta\": {\n        \"code\": \"400\",\n        \"type\": \"Bad Request\",\n        \"message\": \"The request was error processed.\",\n        \"error\": [\n            {\n                \"path\": \"\",\n                \"info\": \"\"\n            }\n        ]\n    },\n    \"data\": {\n    }\n}"
+				},
+				{
+					"name": "500",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"name\",\r\n    \"logo_url\": \"example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_usl}}{{api}}/courier/:id",
+							"host": [
+								"{{base_usl}}{{api}}"
+							],
+							"path": [
+								"courier",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"meta\": {\n        \"code\": \"500\",\n        \"type\": \"Internal Server Error\",\n        \"message\": \"The request was error processed.\",\n        \"error\": [\n            {\n                \"path\": \"\",\n                \"info\": \"\"\n            }\n        ]\n    },\n    \"data\": {\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
