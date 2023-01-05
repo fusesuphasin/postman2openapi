@@ -23,8 +23,8 @@
 
     # response-postman-to-openapi
 
-    | object | name | type | omitempty | properties | description | example | default | enum |
-    | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+    | code | object | name | type | omitempty | properties | description | example | default | enum |
+    | ---  | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
   ```
 
@@ -109,9 +109,10 @@
        ถ้าต้องการ response code มากกว่าหนึ่งให้ขั้นด้วย  (#### status-code)
 
         ```
-        | object | name | type | omitempty | properties | description | example | default | enum |
+        | code | object | name | type | omitempty | properties | description | example | default | enum |
         ```
 
+      -  **code** : status code
       -  **object** : path ของ field
       -  **name** : ชื่อ key ของ field 
       -  **type** : ชื่อ ประเภทข้อมูลของ key ของ field 
