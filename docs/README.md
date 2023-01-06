@@ -144,8 +144,7 @@
         ```
         /pet/info/countries/:counties/language/:language
         ```
-
-        - request
+        - request body
         ```
             {
                 "pet": "dog",
@@ -171,45 +170,69 @@
             }
         ```
 
-
-        - response (ต้องมี data{} )
+        - response 201
         ```
             {
-                "meta": {
-                    "code": "200",
-                    "type": "OK",
-                    "message": "The request was successfully processed.",
-                    "error": [
-                        {
-                            "path": "",
-                            "info": ""
-                        }
-                    ]
-                },
-                "data": {
-                    "id": "string",
-                    "pet": "dog",
-                    "info": {
-                        "name": "pizza",
-                        "age": 1.2,
-                        "behavior": [
-                            "freindly"
-                        ]
-                    },
-                    "owner": [
-                        {
-                            "name": "santa",
-                            "age": 30,
-                            "address": {
-                                "address_1": "174 wo wo town",
-                                "city": "dao namex",
-                                "country": "wakanda"
+                "data": [
+                    {
+                        "id": "string",
+                        "pet": "dog",
+                        "info": {
+                            "name": "pizza",
+                            "age": 1.2,
+                            "behavior": [
+                                "freindly"
+                            ]
+                        },
+                        "owner": [
+                            {
+                                "name": "santa",
+                                "age": 30,
+                                "address": {
+                                    "address_1": "174 wo wo town",
+                                    "city": "dao namex",
+                                    "country": "wakanda"
+                                }
                             }
-                        }
-                    ],
-                    "alive": true,
-                    "created_at": "2022-02-12T04:30:30.359Z"
+                        ],
+                        "alive": true,
+                        "created_at": "2022-02-12T04:30:30.359Z"
+                    }
+                ],
+                "pagination": {
+                    "offset": 0,
+                    "limit": 20,
+                    "total": 1,
+                    "total_page": 1
                 }
+            }
+        ```
+
+        - response 400
+        ```
+            {
+                "code": "000",
+                "type": "Exception",
+                "message": "Message describing the error.",
+                "user_title": "A title.",
+                "user_message": "A message.",
+                "details": [
+                    {
+                        "message": "Message describing the error.",
+                        "user_title": "A title.",
+                        "user_message": "A message."
+                    }
+                ],
+                "validations": [
+                    {
+                        "field": "name",
+                        "path": "user.name",
+                        "tag": "required",
+                        "param": "",
+                        "value": "",
+                        "message": "the format of the data is not valid as required."
+                    }
+                ]
             }
         ```
 
@@ -234,25 +257,19 @@
             | info | age | float | false |  | title=title_example |  |  |  |  |  |
             | info | behavior | array | false |  |  |  |  | freindly, freindly,  <br>freindly |  |  |
             |  | owner | array | false |  |  |  |  |  |  |  |
-            | owner | name | string | false |  |  |  |  |  |  |  |
-            | owner | age | integer | false |  |  |  |  |  |  |  |
-            | owner | address | object | false |  |  |  |  |  |  |  |
-            | owner.adress | address_1 | string | false |  |  |  |  |  |  |  |
-            | owner.adress | city | string | false |  |  |  |  |  |  |  |
-            | owner.adress | country | string | false |  |  |  |  |  |  |  |
+            | owner.0 | name | string | false |  |  |  |  |  |  |  |
+            | owner.0 | age | integer | false |  |  |  |  |  |  |  |
+            | owner.0 | address | object | false |  |  |  |  |  |  |  |
+            | owner.0.adress | address_1 | string | false |  |  |  |  |  |  |  |
+            | owner.0.adress | city | string | false |  |  |  |  |  |  |  |
+            | owner.0.adress | country | string | false |  |  |  |  |  |  |  |
             |  | alive | boolean | false |  |  |  |  |  |  |  |
 
-            '# response-postman-to-openapi
+            # response-postman-to-openapi
 
             | code | object | name | type | omitempty | properties | description | example | default | enum |
             | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-            | 201 |  | meta | object |  |  |  |  |  |  |
-            |  | meta | code | string |  |  |  |  |  |  |
-            |  | meta | type | string |  |  |  |  |  |  |
-            |  | meta | errors | array |  |  |  |  |  |  |
-            |  | meta.errors | path | string |  |  |  |  |  |  |
-            |  | meta.errors | info | string |  |  |  |  |  |  |
-            |  |  | data | object |  |  |  |  |  |  |
+            | 201 |  | data | object |  |  |  |  |  |  |
             |  | data | id | string |  |  |  |  |  |  |
             |  | data | pet | string |  |  |  |  |  |  |
             |  | data | info | object |  |  |  |  |  |  |
@@ -260,36 +277,54 @@
             |  | data.info | age | float |  |  |  |  |  |  |
             |  | data.info | behavior | array |  |  |  |  |  |  |
             |  | data | owner | array |  |  |  |  |  |  |
-            |  | data.owner | name | string |  |  |  |  |  |  |
-            |  | data.owner | age | integer |  |  |  |  |  |  |
-            |  | data.owner | address | object |  |  |  |  |  |  |
-            |  | data.owner.address | address_1 | string |  |  |  |  |  |  |
-            |  | data.owner.address | city | string |  |  |  |  |  |  |
-            |  | data.owner.address | country | string |  |  |  |  |  |  |
+            |  | data.owner.0 | name | string |  |  |  |  |  |  |
+            |  | data.owner.0 | age | integer |  |  |  |  |  |  |
+            |  | data.owner.0 | address | object |  |  |  |  |  |  |
+            |  | data.owner.0.address | address_1 | string |  |  |  |  |  |  |
+            |  | data.owner.0.address | city | string |  |  |  |  |  |  |
+            |  | data.owner.0.address | country | string |  |  |  |  |  |  |
             |  | data | alive | boolean |  |  |  |  |  |  |
             |  | data | created_at | string |  |  |  |  |  |  |
 
-            '#### status-code
+            #### status-code
 
             | code | object | name | type | omitempty | properties | description | example | default | enum |
             | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-            | 400 |  | meta | object |  |  |  |  |  |  |
-            |  | meta | code | string |  |  | error 400 |  |  |  |
-            |  | meta | type | string |  |  |  | 400 |  |  |
-            |  | meta | errors | array |  |  |  |  |  |  |
-            |  | meta.errors | path | string |  |  |  |  |  |  |
-            |  | meta.errors | info | string |  |  |  |  |  |  |
-            |  |  | data | object |  |  |  |  |  |  |
+            | 400 |  | code | object |  |  |  |  |  |  |
+            |  |  | type | string |  |  | error 400 |  |  |  |
+            |  |  | message | string |  |  |  | 400 |  |  |
+            |  |  | user_title | string |  |  |  |  |  |  |
+            |  |  | user_message | string |  |  |  |  |  |  |
+            |  |  | details | array |  |  |  |  |  |  |
+            |  | details.0 | message | string |  |  |  |  |  |  |
+            |  | details.0 | user_title | string |  |  |  |  |  |  |
+            |  | details.0 | user_message | string |  |  |  |  |  |  |
+            |  |  | validations | array |  |  |  |  |  |  |
+            |  | validations.0 | field | string |  |  |  |  |  |  |
+            |  | validations.0 | path | string |  |  |  |  |  |  |
+            |  | validations.0 | tag | string |  |  |  |  |  |  |
+            |  | validations.0 | param | string |  |  |  |  |  |  |
+            |  | validations.0 | value | string |  |  |  |  |  |  |
+            |  | validations.0 | message | string |  |  |  |  |  |  |
 
-            '#### status-code
+            #### status-code
 
             | code | object | name | type | omitempty | properties | description | example | default | enum |
             | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-            | 500 |  | meta | object |  |  |  |  |  |  |
-            |  | meta | code | string |  |  | error 500 |  |  |  |
-            |  | meta | type | string |  |  |  | 500 |  |  |
-            |  | meta | errors | array |  |  |  |  |  |  |
-            |  | meta.errors | path | string |  |  |  |  |  |  |
-            |  | meta.errors | info | string |  |  |  |  |  |  |
-            |  |  | data | object |  |  |  |  |  |  |
+            | 500 |  | code | object |  |  |  |  |  |  |
+            |  |  | type | string |  |  | error 400 |  |  |  |
+            |  |  | message | string |  |  |  | 400 |  |  |
+            |  |  | user_title | string |  |  |  |  |  |  |
+            |  |  | user_message | string |  |  |  |  |  |  |
+            |  |  | details | array |  |  |  |  |  |  |
+            |  | details.0 | message | string |  |  |  |  |  |  |
+            |  | details.0 | user_title | string |  |  |  |  |  |  |
+            |  | details.0 | user_message | string |  |  |  |  |  |  |
+            |  |  | validations | array |  |  |  |  |  |  |
+            |  | validations.0 | field | string |  |  |  |  |  |  |
+            |  | validations.0 | path | string |  |  |  |  |  |  |
+            |  | validations.0 | tag | string |  |  |  |  |  |  |
+            |  | validations.0 | param | string |  |  |  |  |  |  |
+            |  | validations.0 | value | string |  |  |  |  |  |  |
+            |  | validations.0 | message | string |  |  |  |  |  |  |
         ```

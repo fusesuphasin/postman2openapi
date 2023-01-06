@@ -55,22 +55,22 @@ paths:
                 example:
                   example:
                     data:
-                      id: string
-                      pet: dog
-                      info:
-                        name: pizza
-                        age: 1.2
-                        behavior:
-                          - freindly
-                      owner:
-                        - name: santa
-                          age: 30
-                          address:
-                            address_1: 174 wo wo town
-                            city: dao namex
-                            country: wakanda
-                      alive: true
-                      created_at: '2022-02-12T04:30:30.359Z'
+                      - id: string
+                        pet: dog
+                        info:
+                          name: pizza
+                          age: 1.2
+                          behavior:
+                            - freindly
+                        owner:
+                          - name: santa
+                            age: 30
+                            address:
+                              address_1: 174 wo wo town
+                              city: dao namex
+                              country: wakanda
+                        alive: true
+                        created_at: '2022-02-12T04:30:30.359Z'
                     pagination:
                       offset: 0
                       limit: 20
@@ -78,52 +78,37 @@ paths:
                       total_page: 1
                 properties:
                   data:
-                    type: object
-                    allOf:
-                      - required: []
-                        properties:
-                          id:
-                            type: string
-                          pet:
-                            type: string
-                          info:
-                            type: object
-                            allOf:
-                              - required: []
-                                properties:
-                                  name:
-                                    type: string
-                                  age:
-                                    type: float
-                                  behavior:
-                                    type: Array of strings
-                                    items:
-                                      required: []
-                                      properties: {}
-                          owner:
-                            type: array
-                            items:
-                              required: []
+                    type: array
+                    items:
+                      required: []
+                      properties:
+                        id:
+                          type: string
+                        pet:
+                          type: string
+                        info:
+                          type: object
+                          allOf:
+                            - required: []
                               properties:
                                 name:
                                   type: string
                                 age:
-                                  type: integer
-                                address:
-                                  type: object
-                                  allOf:
-                                    - required: []
-                                      properties:
-                                        address_1:
-                                          type: string
-                                        city:
-                                          type: string
-                                        country:
-                                          type: string
-                          alive:
-                            type: boolean
-                          created_at:
-                            type: string
+                                  type: float
+                                behavior:
+                                  type: Array of strings
+                                  items:
+                                    required: []
+                                    properties: {}
+                        owner:
+                          type: array
+                          items:
+                            required: []
+                            properties: {}
+                        alive:
+                          type: boolean
+                        created_at:
+                          type: string
                   pagination:
                     type: object
                     allOf:
@@ -625,7 +610,8 @@ paths:
       parameters:
         - name: id
           in: path
-          schema: {}
+          schema:
+            type: string
           required: true
         - name: counties
           in: path
