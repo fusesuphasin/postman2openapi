@@ -8,6 +8,202 @@
 	},
 	"item": [
 		{
+			"name": "List pets infomation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_usl}}{{api}}/pet/info/countries/:counties/language/:language",
+					"host": [
+						"{{base_usl}}{{api}}"
+					],
+					"path": [
+						"pet",
+						"info",
+						"countries",
+						":counties",
+						"language",
+						":language"
+					],
+					"variable": [
+						{
+							"key": "counties",
+							"value": null
+						},
+						{
+							"key": "language",
+							"value": null
+						}
+					]
+				},
+				"description": "create infomation of pet\n\n# params-postman-to-openapi\n\n| object | name | type | required | properties | validate | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  | counties | string | true | minimum=10,maximum=100 |  | params | cba | tha | tha,eng |\n|  | language | string | true | minimum=1,maximum=10 |  | hello params | abc | thai | thai,english |\n\n# body-postman-to-openapi\n\n| object | name | type | required | omitempty | properties | validate | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n\n# response-postman-to-openapi\n\n| code | object | name | type | omitempty | properties | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 200 |  | data | object |  |  |  |  |  |  |\n|  | data | id | string |  |  |  |  |  |  |\n|  | data | pet | string |  |  |  |  |  |  |\n|  | data | info | object |  |  |  |  |  |  |\n|  | data.info | name | string |  |  |  |  |  |  |\n|  | data.info | age | float |  |  |  |  |  |  |\n|  | data.info | behavior | array |  |  |  |  |  |  |\n|  | data | owner | array |  |  |  |  |  |  |\n|  | data.owner | name | string |  |  |  |  |  |  |\n|  | data.owner | age | integer |  |  |  |  |  |  |\n|  | data.owner | address | object |  |  |  |  |  |  |\n|  | data.owner.address | address_1 | string |  |  |  |  |  |  |\n|  | data.owner.address | city | string |  |  |  |  |  |  |\n|  | data.owner.address | country | string |  |  |  |  |  |  |\n|  | data | alive | boolean |  |  |  |  |  |  |\n|  | data | created_at | string |  |  |  |  |  |  |\n|  |  | pagination | object |  |  |  |  |  |  |\n|  | pagination | offset | integer |  |  |  |  |  |  |\n|  | pagination | limit | integer |  |  |  |  |  |  |\n|  | pagination | total | integer |  |  |  |  |  |  |\n|  | pagination | total_page | integer |  |  |  |  |  |  |\n\n#### status-code\n\n| code | object | name | type | omitempty | properties | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 400 |  | code | object |  |  |  |  |  |  |\n|  |  | type | string |  |  | error 400 |  |  |  |\n|  |  | message | string |  |  |  | 400 |  |  |\n|  |  | user_title | string |  |  |  |  |  |  |\n|  |  | user_message | string |  |  |  |  |  |  |\n|  |  | details | array |  |  |  |  |  |  |\n|  | details | message | string |  |  |  |  |  |  |\n|  | details | user_title | string |  |  |  |  |  |  |\n|  | details | user_message | string |  |  |  |  |  |  |\n|  |  | validations | array |  |  |  |  |  |  |\n|  | validations | field | string |  |  |  |  |  |  |\n|  | validations | path | string |  |  |  |  |  |  |\n|  | validations | tag | string |  |  |  |  |  |  |\n|  | validations | param | string |  |  |  |  |  |  |\n|  | validations | value | string |  |  |  |  |  |  |\n|  | validations | message | string |  |  |  |  |  |  |\n\n#### status-code\n\n| code | object | name | type | omitempty | properties | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 500 |  | code | object |  |  |  |  |  |  |\n|  |  | type | string |  |  | error 400 |  |  |  |\n|  |  | message | string |  |  |  | 500 |  |  |\n|  |  | user_title | string |  |  |  |  |  |  |\n|  |  | user_message | string |  |  |  |  |  |  |\n|  |  | details | array |  |  |  |  |  |  |\n|  | details | message | string |  |  |  |  |  |  |\n|  | details | user_title | string |  |  |  |  |  |  |\n|  | details | user_message | string |  |  |  |  |  |  |\n|  |  | validations | array |  |  |  |  |  |  |\n|  | validations | field | string |  |  |  |  |  |  |\n|  | validations | path | string |  |  |  |  |  |  |\n|  | validations | tag | string |  |  |  |  |  |  |\n|  | validations | param | string |  |  |  |  |  |  |\n|  | validations | value | string |  |  |  |  |  |  |\n|  | validations | message | string |  |  |  |  |  |  |"
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"name\",\r\n    \"logo_url\": \"example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_usl}}{{api}}/pet/info/countries/:counties/language/:language",
+							"host": [
+								"{{base_usl}}{{api}}"
+							],
+							"path": [
+								"pet",
+								"info",
+								"countries",
+								":counties",
+								"language",
+								":language"
+							],
+							"variable": [
+								{
+									"key": "counties",
+									"value": null
+								},
+								{
+									"key": "language",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": \"string\",\n        \"pet\": \"dog\",\n        \"info\": {\n            \"name\": \"pizza\",\n            \"age\": 1.2,\n            \"behavior\": [\n                \"freindly\"\n            ]\n        },\n        \"owner\": [\n            {\n                \"name\": \"santa\",\n                \"age\": 30,\n                \"address\": {\n                    \"address_1\": \"174 wo wo town\",\n                    \"city\": \"dao namex\",\n                    \"country\": \"wakanda\"\n                }\n            }\n        ],\n        \"alive\": true,\n        \"created_at\": \"2022-02-12T04:30:30.359Z\"\n    },\n    \"pagination\": {\n        \"offset\": 0,\n        \"limit\": 20,\n        \"total\": 1,\n        \"total_page\": 1\n    }\n}"
+				},
+				{
+					"name": "400",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"name\",\r\n    \"logo_url\": \"example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_usl}}{{api}}/pet/info/countries/:counties/language/:language",
+							"host": [
+								"{{base_usl}}{{api}}"
+							],
+							"path": [
+								"pet",
+								"info",
+								"countries",
+								":counties",
+								"language",
+								":language"
+							],
+							"variable": [
+								{
+									"key": "counties",
+									"value": null
+								},
+								{
+									"key": "language",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": \"000\",\n    \"type\": \"Exception\",\n    \"message\": \"Message describing the error.\",\n    \"user_title\": \"A title.\",\n    \"user_message\": \"A message.\",\n    \"details\": [\n        {\n            \"message\": \"Message describing the error.\",\n            \"user_title\": \"A title.\",\n            \"user_message\": \"A message.\"\n        }\n    ],\n    \"validations\": [\n        {\n            \"field\": \"name\",\n            \"path\": \"user.name\",\n            \"tag\": \"required\",\n            \"param\": \"\",\n            \"value\": \"\",\n            \"message\": \"the format of the data is not valid as required.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "500",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"name\",\r\n    \"logo_url\": \"example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_usl}}{{api}}/pet/info/countries/:counties/language/:language",
+							"host": [
+								"{{base_usl}}{{api}}"
+							],
+							"path": [
+								"pet",
+								"info",
+								"countries",
+								":counties",
+								"language",
+								":language"
+							],
+							"variable": [
+								{
+									"key": "counties",
+									"value": null
+								},
+								{
+									"key": "language",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"code\": \"000\",\r\n    \"type\": \"Exception\",\r\n    \"message\": \"Message describing the error.\",\r\n    \"user_title\": \"A title.\",\r\n    \"user_message\": \"A message.\",\r\n    \"details\": [\r\n        {\r\n            \"message\": \"Message describing the error.\",\r\n            \"user_title\": \"A title.\",\r\n            \"user_message\": \"A message.\"\r\n        }\r\n    ],\r\n    \"validations\": [\r\n        {\r\n            \"field\": \"name\",\r\n            \"path\": \"user.name\",\r\n            \"tag\": \"required\",\r\n            \"param\": \"\",\r\n            \"value\": \"\",\r\n            \"message\": \"the format of the data is not valid as required.\"\r\n        }\r\n    ]\r\n}"
+				}
+			]
+		},
+		{
 			"name": "Create a pet infomation",
 			"request": {
 				"method": "POST",
@@ -45,7 +241,7 @@
 						}
 					]
 				},
-				"description": "create infomation of pet\n\n# params-postman-to-openapi\n\n| object | name | type | required | properties | validate | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  | counties | string | true | minimum=10,maximum=100 |  | params | cba | tha | tha,eng |\n|  | language | string | true | minimum=1,maximum=10 |  | hello params | abc | thai | thai,english |\n\n# body-postman-to-openapi\n\n| object | name | type | required | omitempty | properties | validate | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  | pet | string | true |  | minimum=1,maximum=10 | min=1,max=10 | pet type | dog |  | dog,cat,bird |\n|  | info | object | false |  |  |  |  |  |  |  |\n| info | name | string | true |  | pattern=\\[a-z\\] |  | name of pet | pizza |  |  |\n| info | age | float | false |  | title=title_example |  |  |  |  |  |\n| info | behavior | array | false |  |  |  |  | freindly, freindly,  <br>freindly |  |  |\n|  | owner | array | false |  |  |  |  |  |  |  |\n| owner | name | string | false |  |  |  |  |  |  |  |\n| owner | age | integer | false |  |  |  |  |  |  |  |\n| owner | address | object | false |  |  |  |  |  |  |  |\n| owner.adress | address_1 | string | false |  |  |  |  |  |  |  |\n| owner.adress | city | string | false |  |  |  |  |  |  |  |\n| owner.adress | country | string | false |  |  |  |  |  |  |  |\n|  | alive | boolean | false |  |  |  |  |  |  |  |\n\n# response-postman-to-openapi\n\n| code | object | name | type | omitempty | properties | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 201 |  | meta | object |  |  |  |  |  |  |\n|  | meta | code | string |  |  |  |  |  |  |\n|  | meta | type | string |  |  |  |  |  |  |\n|  | meta | errors | array |  |  |  |  |  |  |\n|  | meta.errors | path | string |  |  |  |  |  |  |\n|  | meta.errors | info | string |  |  |  |  |  |  |\n|  |  | data | object |  |  |  |  |  |  |\n|  | data | id | string |  |  |  |  |  |  |\n|  | data | pet | string |  |  |  |  |  |  |\n|  | data | info | object |  |  |  |  |  |  |\n|  | data.info | name | string |  |  |  |  |  |  |\n|  | data.info | age | float |  |  |  |  |  |  |\n|  | data.info | behavior | array |  |  |  |  |  |  |\n|  | data | owner | array |  |  |  |  |  |  |\n|  | data.owner | name | string |  |  |  |  |  |  |\n|  | data.owner | age | integer |  |  |  |  |  |  |\n|  | data.owner | address | object |  |  |  |  |  |  |\n|  | data.owner.address | address_1 | string |  |  |  |  |  |  |\n|  | data.owner.address | city | string |  |  |  |  |  |  |\n|  | data.owner.address | country | string |  |  |  |  |  |  |\n|  | data | alive | boolean |  |  |  |  |  |  |\n|  | data | created_at | string |  |  |  |  |  |  |\n\n#### status-code\n\n| code | object | name | type | omitempty | properties | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 400 |  | meta | object |  |  |  |  |  |  |\n|  | meta | code | string |  |  | error 400 |  |  |  |\n|  | meta | type | string |  |  |  | 400 |  |  |\n|  | meta | errors | array |  |  |  |  |  |  |\n|  | meta.errors | path | string |  |  |  |  |  |  |\n|  | meta.errors | info | string |  |  |  |  |  |  |\n|  |  | data | object |  |  |  |  |  |  |\n\n#### status-code\n\n| code | object | name | type | omitempty | properties | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 500 |  | meta | object |  |  |  |  |  |  |\n|  | meta | code | string |  |  | error 500 |  |  |  |\n|  | meta | type | string |  |  |  | 500 |  |  |\n|  | meta | errors | array |  |  |  |  |  |  |\n|  | meta.errors | path | string |  |  |  |  |  |  |\n|  | meta.errors | info | string |  |  |  |  |  |  |\n|  |  | data | object |  |  |  |  |  |  |"
+				"description": "create infomation of pet\n\n# params-postman-to-openapi\n\n| object | name | type | required | properties | validate | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  | counties | string | true | minimum=10,maximum=100 |  | params | cba | tha | tha,eng |\n|  | language | string | true | minimum=1,maximum=10 |  | hello params | abc | thai | thai,english |\n\n# body-postman-to-openapi\n\n| object | name | type | required | omitempty | properties | validate | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  | pet | string | true |  | minimum=1,maximum=10 | min=1,max=10 | pet type | dog |  | dog,cat,bird |\n|  | info | object | false |  |  |  |  |  |  |  |\n| info | name | string | true |  | pattern=\\[a-z\\] |  | name of pet | pizza |  |  |\n| info | age | float | false |  | title=title_example |  |  |  |  |  |\n| info | behavior | array | false |  |  |  |  | freindly, freindly,  <br>freindly |  |  |\n|  | owner | array | false |  |  |  |  |  |  |  |\n| owner | name | string | false |  |  |  |  |  |  |  |\n| owner | age | integer | false |  |  |  |  |  |  |  |\n| owner | address | object | false |  |  |  |  |  |  |  |\n| owner.adress | address_1 | string | false |  |  |  |  |  |  |  |\n| owner.adress | city | string | false |  |  |  |  |  |  |  |\n| owner.adress | country | string | false |  |  |  |  |  |  |  |\n|  | alive | boolean | false |  |  |  |  |  |  |  |\n\n# response-postman-to-openapi\n\n| code | object | name | type | omitempty | properties | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 201 |  | meta | object |  |  |  |  |  |  |\n|  | meta | code | string |  |  |  |  |  |  |\n|  | meta | type | string |  |  |  |  |  |  |\n|  | meta | errors | array |  |  |  |  |  |  |\n|  | meta.errors | path | string |  |  |  |  |  |  |\n|  | meta.errors | info | string |  |  |  |  |  |  |\n|  |  | data | object |  |  |  |  |  |  |\n|  | data | id | string |  |  |  |  |  |  |\n|  | data | pet | string |  |  |  |  |  |  |\n|  | data | info | object |  |  |  |  |  |  |\n|  | data.info | name | string |  |  |  |  |  |  |\n|  | data.info | age | float |  |  |  |  |  |  |\n|  | data.info | behavior | array |  |  |  |  |  |  |\n|  | data | owner | array |  |  |  |  |  |  |\n|  | data.owner | name | string |  |  |  |  |  |  |\n|  | data.owner | age | integer |  |  |  |  |  |  |\n|  | data.owner | address | object |  |  |  |  |  |  |\n|  | data.owner.address | address_1 | string |  |  |  |  |  |  |\n|  | data.owner.address | city | string |  |  |  |  |  |  |\n|  | data.owner.address | country | string |  |  |  |  |  |  |\n|  | data | alive | boolean |  |  |  |  |  |  |\n|  | data | created_at | string |  |  |  |  |  |  |\n\n#### status-code\n\n| code | object | name | type | omitempty | properties | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 400 |  | code | object |  |  |  |  |  |  |\n|  |  | type | string |  |  | error 400 |  |  |  |\n|  |  | message | string |  |  |  | 400 |  |  |\n|  |  | user_title | string |  |  |  |  |  |  |\n|  |  | user_message | string |  |  |  |  |  |  |\n|  |  | details | array |  |  |  |  |  |  |\n|  | details | message | string |  |  |  |  |  |  |\n|  | details | user_title | string |  |  |  |  |  |  |\n|  | details | user_message | string |  |  |  |  |  |  |\n|  |  | validations | array |  |  |  |  |  |  |\n|  | validations | field | string |  |  |  |  |  |  |\n|  | validations | path | string |  |  |  |  |  |  |\n|  | validations | tag | string |  |  |  |  |  |  |\n|  | validations | param | string |  |  |  |  |  |  |\n|  | validations | value | string |  |  |  |  |  |  |\n|  | validations | message | string |  |  |  |  |  |  |\n\n#### status-code\n\n| code | object | name | type | omitempty | properties | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 500 |  | code | object |  |  |  |  |  |  |\n|  |  | type | string |  |  | error 400 |  |  |  |\n|  |  | message | string |  |  |  | 400 |  |  |\n|  |  | user_title | string |  |  |  |  |  |  |\n|  |  | user_message | string |  |  |  |  |  |  |\n|  |  | details | array |  |  |  |  |  |  |\n|  | details | message | string |  |  |  |  |  |  |\n|  | details | user_title | string |  |  |  |  |  |  |\n|  | details | user_message | string |  |  |  |  |  |  |\n|  |  | validations | array |  |  |  |  |  |  |\n|  | validations | field | string |  |  |  |  |  |  |\n|  | validations | path | string |  |  |  |  |  |  |\n|  | validations | tag | string |  |  |  |  |  |  |\n|  | validations | param | string |  |  |  |  |  |  |\n|  | validations | value | string |  |  |  |  |  |  |\n|  | validations | message | string |  |  |  |  |  |  |"
 			},
 			"response": [
 				{
@@ -63,17 +259,25 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_usl}}{{api}}/courier/:id",
+							"raw": "{{base_usl}}{{api}}/pet/info/countries/:counties/language/:language",
 							"host": [
 								"{{base_usl}}{{api}}"
 							],
 							"path": [
-								"courier",
-								":id"
+								"pet",
+								"info",
+								"countries",
+								":counties",
+								"language",
+								":language"
 							],
 							"variable": [
 								{
-									"key": "id",
+									"key": "counties",
+									"value": null
+								},
+								{
+									"key": "language",
 									"value": null
 								}
 							]
@@ -92,7 +296,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"meta\": {\n        \"code\": \"201\",\n        \"type\": \"Create\",\n        \"message\": \"The request was successfully processed.\",\n        \"error\": [\n            {\n                \"path\": \"\",\n                \"info\": \"\"\n            }\n        ]\n    },\n    \"data\": {\n        \"id\": \"string\",\n        \"pet\": \"dog\",\n        \"info\": {\n            \"name\": \"pizza\",\n            \"age\": 1.2,\n            \"behavior\": [\n                \"freindly\"\n            ]\n        },\n        \"owner\": [\n            {\n                \"name\": \"santa\",\n                \"age\": 30,\n                \"address\": {\n                    \"address_1\": \"174 wo wo town\",\n                    \"city\": \"dao namex\",\n                    \"country\": \"wakanda\"\n                }\n            }\n        ],\n        \"alive\": true,\n        \"created_at\": \"2022-02-12T04:30:30.359Z\"\n    }\n}"
+					"body": "{\n    \"data\": {\n        \"id\": \"string\",\n        \"pet\": \"dog\",\n        \"info\": {\n            \"name\": \"pizza\",\n            \"age\": 1.2,\n            \"behavior\": [\n                \"freindly\"\n            ]\n        },\n        \"owner\": [\n            {\n                \"name\": \"santa\",\n                \"age\": 30,\n                \"address\": {\n                    \"address_1\": \"174 wo wo town\",\n                    \"city\": \"dao namex\",\n                    \"country\": \"wakanda\"\n                }\n            }\n        ],\n        \"alive\": true,\n        \"created_at\": \"2022-02-12T04:30:30.359Z\"\n    }\n}"
 				},
 				{
 					"name": "400",
@@ -109,17 +313,25 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_usl}}{{api}}/courier/:id",
+							"raw": "{{base_usl}}{{api}}/pet/info/countries/:counties/language/:language",
 							"host": [
 								"{{base_usl}}{{api}}"
 							],
 							"path": [
-								"courier",
-								":id"
+								"pet",
+								"info",
+								"countries",
+								":counties",
+								"language",
+								":language"
 							],
 							"variable": [
 								{
-									"key": "id",
+									"key": "counties",
+									"value": null
+								},
+								{
+									"key": "language",
 									"value": null
 								}
 							]
@@ -138,7 +350,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"meta\": {\n        \"code\": \"400\",\n        \"type\": \"Bad Request\",\n        \"message\": \"The request was error processed.\",\n        \"error\": [\n            {\n                \"path\": \"\",\n                \"info\": \"\"\n            }\n        ]\n    },\n    \"data\": {\n    }\n}"
+					"body": "{\n    \"code\": \"000\",\n    \"type\": \"Exception\",\n    \"message\": \"Message describing the error.\",\n    \"user_title\": \"A title.\",\n    \"user_message\": \"A message.\",\n    \"details\": [\n        {\n            \"message\": \"Message describing the error.\",\n            \"user_title\": \"A title.\",\n            \"user_message\": \"A message.\"\n        }\n    ],\n    \"validations\": [\n        {\n            \"field\": \"name\",\n            \"path\": \"user.name\",\n            \"tag\": \"required\",\n            \"param\": \"\",\n            \"value\": \"\",\n            \"message\": \"the format of the data is not valid as required.\"\n        }\n    ]\n}"
 				},
 				{
 					"name": "500",
@@ -155,17 +367,25 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_usl}}{{api}}/courier/:id",
+							"raw": "{{base_usl}}{{api}}/pet/info/countries/:counties/language/:language",
 							"host": [
 								"{{base_usl}}{{api}}"
 							],
 							"path": [
-								"courier",
-								":id"
+								"pet",
+								"info",
+								"countries",
+								":counties",
+								"language",
+								":language"
 							],
 							"variable": [
 								{
-									"key": "id",
+									"key": "counties",
+									"value": null
+								},
+								{
+									"key": "language",
 									"value": null
 								}
 							]
@@ -184,7 +404,223 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"meta\": {\n        \"code\": \"500\",\n        \"type\": \"Internal Server Error\",\n        \"message\": \"The request was error processed.\",\n        \"error\": [\n            {\n                \"path\": \"\",\n                \"info\": \"\"\n            }\n        ]\n    },\n    \"data\": {\n    }\n}"
+					"body": "{\r\n    \"code\": \"000\",\r\n    \"type\": \"Exception\",\r\n    \"message\": \"Message describing the error.\",\r\n    \"user_title\": \"A title.\",\r\n    \"user_message\": \"A message.\",\r\n    \"details\": [\r\n        {\r\n            \"message\": \"Message describing the error.\",\r\n            \"user_title\": \"A title.\",\r\n            \"user_message\": \"A message.\"\r\n        }\r\n    ],\r\n    \"validations\": [\r\n        {\r\n            \"field\": \"name\",\r\n            \"path\": \"user.name\",\r\n            \"tag\": \"required\",\r\n            \"param\": \"\",\r\n            \"value\": \"\",\r\n            \"message\": \"the format of the data is not valid as required.\"\r\n        }\r\n    ]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete a pet infomation",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_usl}}{{api}}/pet/info/:id/countries/:counties/language/:language",
+					"host": [
+						"{{base_usl}}{{api}}"
+					],
+					"path": [
+						"pet",
+						"info",
+						":id",
+						"countries",
+						":counties",
+						"language",
+						":language"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": null
+						},
+						{
+							"key": "counties",
+							"value": null
+						},
+						{
+							"key": "language",
+							"value": null
+						}
+					]
+				},
+				"description": "create infomation of pet\n\n# params-postman-to-openapi\n\n| object | name | type | required | properties | validate | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  | counties | string | true | minimum=10,maximum=100 |  | params | cba | tha | tha,eng |\n|  | language | string | true | minimum=1,maximum=10 |  | hello params | abc | thai | thai,english |\n\n# body-postman-to-openapi\n\n| object | name | type | required | omitempty | properties | validate | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  | pet | string | true |  | minimum=1,maximum=10 | min=1,max=10 | pet type | dog |  | dog,cat,bird |\n|  | info | object | false |  |  |  |  |  |  |  |\n| info | name | string | true |  | pattern=\\[a-z\\] |  | name of pet | pizza |  |  |\n| info | age | float | false |  | title=title_example |  |  |  |  |  |\n| info | behavior | array | false |  |  |  |  | freindly, freindly,  <br>freindly |  |  |\n|  | owner | array | false |  |  |  |  |  |  |  |\n| owner | name | string | false |  |  |  |  |  |  |  |\n| owner | age | integer | false |  |  |  |  |  |  |  |\n| owner | address | object | false |  |  |  |  |  |  |  |\n| owner.adress | address_1 | string | false |  |  |  |  |  |  |  |\n| owner.adress | city | string | false |  |  |  |  |  |  |  |\n| owner.adress | country | string | false |  |  |  |  |  |  |  |\n|  | alive | boolean | false |  |  |  |  |  |  |  |\n\n# response-postman-to-openapi\n\n| code | object | name | type | omitempty | properties | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 201 |  | meta | object |  |  |  |  |  |  |\n|  | meta | code | string |  |  |  |  |  |  |\n|  | meta | type | string |  |  |  |  |  |  |\n|  | meta | errors | array |  |  |  |  |  |  |\n|  | meta.errors | path | string |  |  |  |  |  |  |\n|  | meta.errors | info | string |  |  |  |  |  |  |\n|  |  | data | object |  |  |  |  |  |  |\n|  | data | id | string |  |  |  |  |  |  |\n|  | data | pet | string |  |  |  |  |  |  |\n|  | data | info | object |  |  |  |  |  |  |\n|  | data.info | name | string |  |  |  |  |  |  |\n|  | data.info | age | float |  |  |  |  |  |  |\n|  | data.info | behavior | array |  |  |  |  |  |  |\n|  | data | owner | array |  |  |  |  |  |  |\n|  | data.owner | name | string |  |  |  |  |  |  |\n|  | data.owner | age | integer |  |  |  |  |  |  |\n|  | data.owner | address | object |  |  |  |  |  |  |\n|  | data.owner.address | address_1 | string |  |  |  |  |  |  |\n|  | data.owner.address | city | string |  |  |  |  |  |  |\n|  | data.owner.address | country | string |  |  |  |  |  |  |\n|  | data | alive | boolean |  |  |  |  |  |  |\n|  | data | created_at | string |  |  |  |  |  |  |\n\n#### status-code\n\n| code | object | name | type | omitempty | properties | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 400 |  | code | object |  |  |  |  |  |  |\n|  |  | type | string |  |  | error 400 |  |  |  |\n|  |  | message | string |  |  |  | 400 |  |  |\n|  |  | user_title | string |  |  |  |  |  |  |\n|  |  | user_message | string |  |  |  |  |  |  |\n|  |  | details | array |  |  |  |  |  |  |\n|  | details | message | string |  |  |  |  |  |  |\n|  | details | user_title | string |  |  |  |  |  |  |\n|  | details | user_message | string |  |  |  |  |  |  |\n|  |  | validations | array |  |  |  |  |  |  |\n|  | validations | field | string |  |  |  |  |  |  |\n|  | validations | path | string |  |  |  |  |  |  |\n|  | validations | tag | string |  |  |  |  |  |  |\n|  | validations | param | string |  |  |  |  |  |  |\n|  | validations | value | string |  |  |  |  |  |  |\n|  | validations | message | string |  |  |  |  |  |  |\n\n#### status-code\n\n| code | object | name | type | omitempty | properties | description | example | default | enum |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 500 |  | code | object |  |  |  |  |  |  |\n|  |  | type | string |  |  | error 400 |  |  |  |\n|  |  | message | string |  |  |  | 500 |  |  |\n|  |  | user_title | string |  |  |  |  |  |  |\n|  |  | user_message | string |  |  |  |  |  |  |\n|  |  | details | array |  |  |  |  |  |  |\n|  | details | message | string |  |  |  |  |  |  |\n|  | details | user_title | string |  |  |  |  |  |  |\n|  | details | user_message | string |  |  |  |  |  |  |\n|  |  | validations | array |  |  |  |  |  |  |\n|  | validations | field | string |  |  |  |  |  |  |\n|  | validations | path | string |  |  |  |  |  |  |\n|  | validations | tag | string |  |  |  |  |  |  |\n|  | validations | param | string |  |  |  |  |  |  |\n|  | validations | value | string |  |  |  |  |  |  |\n|  | validations | message | string |  |  |  |  |  |  |"
+			},
+			"response": [
+				{
+					"name": "204",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"name\",\r\n    \"logo_url\": \"example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_usl}}{{api}}/pet/info/:id/countries/:counties/language/:language",
+							"host": [
+								"{{base_usl}}{{api}}"
+							],
+							"path": [
+								"pet",
+								"info",
+								":id",
+								"countries",
+								":counties",
+								"language",
+								":language"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								},
+								{
+									"key": "counties",
+									"value": null
+								},
+								{
+									"key": "language",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "400",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"name\",\r\n    \"logo_url\": \"example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_usl}}{{api}}/pet/info/:id/countries/:counties/language/:language",
+							"host": [
+								"{{base_usl}}{{api}}"
+							],
+							"path": [
+								"pet",
+								"info",
+								":id",
+								"countries",
+								":counties",
+								"language",
+								":language"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								},
+								{
+									"key": "counties",
+									"value": null
+								},
+								{
+									"key": "language",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": \"000\",\n    \"type\": \"Exception\",\n    \"message\": \"Message describing the error.\",\n    \"user_title\": \"A title.\",\n    \"user_message\": \"A message.\",\n    \"details\": [\n        {\n            \"message\": \"Message describing the error.\",\n            \"user_title\": \"A title.\",\n            \"user_message\": \"A message.\"\n        }\n    ],\n    \"validations\": [\n        {\n            \"field\": \"name\",\n            \"path\": \"user.name\",\n            \"tag\": \"required\",\n            \"param\": \"\",\n            \"value\": \"\",\n            \"message\": \"the format of the data is not valid as required.\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "500",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"name\",\r\n    \"logo_url\": \"example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_usl}}{{api}}/pet/info/:id/countries/:counties/language/:language",
+							"host": [
+								"{{base_usl}}{{api}}"
+							],
+							"path": [
+								"pet",
+								"info",
+								":id",
+								"countries",
+								":counties",
+								"language",
+								":language"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								},
+								{
+									"key": "counties",
+									"value": null
+								},
+								{
+									"key": "language",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"code\": \"000\",\r\n    \"type\": \"Exception\",\r\n    \"message\": \"Message describing the error.\",\r\n    \"user_title\": \"A title.\",\r\n    \"user_message\": \"A message.\",\r\n    \"details\": [\r\n        {\r\n            \"message\": \"Message describing the error.\",\r\n            \"user_title\": \"A title.\",\r\n            \"user_message\": \"A message.\"\r\n        }\r\n    ],\r\n    \"validations\": [\r\n        {\r\n            \"field\": \"name\",\r\n            \"path\": \"user.name\",\r\n            \"tag\": \"required\",\r\n            \"param\": \"\",\r\n            \"value\": \"\",\r\n            \"message\": \"the format of the data is not valid as required.\"\r\n        }\r\n    ]\r\n}"
 				}
 			]
 		}

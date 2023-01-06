@@ -7,6 +7,284 @@ servers:
   - url: http://{{base_usl}}{{api}}
 paths:
   /pet/info/countries/{counties}/language/{language}:
+    get:
+      tags:
+        - General
+      summary: List pets infomation
+      description: create infomation of pet
+      parameters:
+        - name: counties
+          in: path
+          schema:
+            type: string
+            default: tha
+            enum:
+              - tha
+              - eng
+            minimum: '10'
+            maximum: '100'
+          required: true
+          description: params
+          example: cba
+        - name: language
+          in: path
+          schema:
+            type: string
+            default: thai
+            enum:
+              - thai
+              - english
+            minimum: '1'
+            maximum: '10'
+          required: true
+          description: hello params
+          example: abc
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: Content-Type
+          content:
+            application/json:
+              schema:
+                type: object
+                required: []
+                example:
+                  example:
+                    data:
+                      id: string
+                      pet: dog
+                      info:
+                        name: pizza
+                        age: 1.2
+                        behavior:
+                          - freindly
+                      owner:
+                        - name: santa
+                          age: 30
+                          address:
+                            address_1: 174 wo wo town
+                            city: dao namex
+                            country: wakanda
+                      alive: true
+                      created_at: '2022-02-12T04:30:30.359Z'
+                    pagination:
+                      offset: 0
+                      limit: 20
+                      total: 1
+                      total_page: 1
+                properties:
+                  data:
+                    type: object
+                    allOf:
+                      - required: []
+                        properties:
+                          id:
+                            type: string
+                          pet:
+                            type: string
+                          info:
+                            type: object
+                            allOf:
+                              - required: []
+                                properties:
+                                  name:
+                                    type: string
+                                  age:
+                                    type: float
+                                  behavior:
+                                    type: Array of strings
+                                    items:
+                                      required: []
+                                      properties: {}
+                          owner:
+                            type: array
+                            items:
+                              required: []
+                              properties:
+                                name:
+                                  type: string
+                                age:
+                                  type: integer
+                                address:
+                                  type: object
+                                  allOf:
+                                    - required: []
+                                      properties:
+                                        address_1:
+                                          type: string
+                                        city:
+                                          type: string
+                                        country:
+                                          type: string
+                          alive:
+                            type: boolean
+                          created_at:
+                            type: string
+                  pagination:
+                    type: object
+                    allOf:
+                      - required: []
+                        properties:
+                          offset:
+                            type: integer
+                          limit:
+                            type: integer
+                          total:
+                            type: integer
+                          total_page:
+                            type: integer
+        '400':
+          description: Bad Request
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: Content-Type
+          content:
+            application/json:
+              schema:
+                type: object
+                required: []
+                example:
+                  example:
+                    code: '000'
+                    type: Exception
+                    message: Message describing the error.
+                    user_title: A title.
+                    user_message: A message.
+                    details:
+                      - message: Message describing the error.
+                        user_title: A title.
+                        user_message: A message.
+                    validations:
+                      - field: name
+                        path: user.name
+                        tag: required
+                        param: ''
+                        value: ''
+                        message: the format of the data is not valid as required.
+                properties:
+                  code:
+                    type: object
+                    allOf:
+                      - required: []
+                        properties: {}
+                  type:
+                    description: |
+                      error 400 
+                    type: string
+                  message:
+                    type: string
+                  user_title:
+                    type: string
+                  user_message:
+                    type: string
+                  details:
+                    type: array
+                    items:
+                      required: []
+                      properties:
+                        message:
+                          type: string
+                        user_title:
+                          type: string
+                        user_message:
+                          type: string
+                  validations:
+                    type: array
+                    items:
+                      required: []
+                      properties:
+                        field:
+                          type: string
+                        path:
+                          type: string
+                        tag:
+                          type: string
+                        param:
+                          type: string
+                        value:
+                          type: string
+                        message:
+                          type: string
+        '500':
+          description: Internal Server Error
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: Content-Type
+          content:
+            application/json:
+              schema:
+                type: object
+                required: []
+                example:
+                  example:
+                    code: '000'
+                    type: Exception
+                    message: Message describing the error.
+                    user_title: A title.
+                    user_message: A message.
+                    details:
+                      - message: Message describing the error.
+                        user_title: A title.
+                        user_message: A message.
+                    validations:
+                      - field: name
+                        path: user.name
+                        tag: required
+                        param: ''
+                        value: ''
+                        message: the format of the data is not valid as required.
+                properties:
+                  code:
+                    type: object
+                    allOf:
+                      - required: []
+                        properties: {}
+                  type:
+                    description: |
+                      error 400 
+                    type: string
+                  message:
+                    type: string
+                  user_title:
+                    type: string
+                  user_message:
+                    type: string
+                  details:
+                    type: array
+                    items:
+                      required: []
+                      properties:
+                        message:
+                          type: string
+                        user_title:
+                          type: string
+                        user_message:
+                          type: string
+                  validations:
+                    type: array
+                    items:
+                      required: []
+                      properties:
+                        field:
+                          type: string
+                        path:
+                          type: string
+                        tag:
+                          type: string
+                        param:
+                          type: string
+                        value:
+                          type: string
+                        message:
+                          type: string
     post:
       tags:
         - General
@@ -125,13 +403,6 @@ paths:
                 required: []
                 example:
                   example:
-                    meta:
-                      code: '201'
-                      type: Create
-                      message: The request was successfully processed.
-                      error:
-                        - path: ''
-                          info: ''
                     data:
                       id: string
                       pet: dog
@@ -150,15 +421,6 @@ paths:
                       alive: true
                       created_at: '2022-02-12T04:30:30.359Z'
                 properties:
-                  meta:
-                    type: object
-                    allOf:
-                      - required: []
-                        properties:
-                          code:
-                            type: string
-                          type:
-                            type: string
                   data:
                     type: object
                     allOf:
@@ -220,31 +482,66 @@ paths:
                 required: []
                 example:
                   example:
-                    meta:
-                      code: '400'
-                      type: Bad Request
-                      message: The request was error processed.
-                      error:
-                        - path: ''
-                          info: ''
-                    data: {}
+                    code: '000'
+                    type: Exception
+                    message: Message describing the error.
+                    user_title: A title.
+                    user_message: A message.
+                    details:
+                      - message: Message describing the error.
+                        user_title: A title.
+                        user_message: A message.
+                    validations:
+                      - field: name
+                        path: user.name
+                        tag: required
+                        param: ''
+                        value: ''
+                        message: the format of the data is not valid as required.
                 properties:
-                  meta:
-                    type: object
-                    allOf:
-                      - required: []
-                        properties:
-                          code:
-                            description: |
-                              error 400 
-                            type: string
-                          type:
-                            type: string
-                  data:
+                  code:
                     type: object
                     allOf:
                       - required: []
                         properties: {}
+                  type:
+                    description: |
+                      error 400 
+                    type: string
+                  message:
+                    type: string
+                  user_title:
+                    type: string
+                  user_message:
+                    type: string
+                  details:
+                    type: array
+                    items:
+                      required: []
+                      properties:
+                        message:
+                          type: string
+                        user_title:
+                          type: string
+                        user_message:
+                          type: string
+                  validations:
+                    type: array
+                    items:
+                      required: []
+                      properties:
+                        field:
+                          type: string
+                        path:
+                          type: string
+                        tag:
+                          type: string
+                        param:
+                          type: string
+                        value:
+                          type: string
+                        message:
+                          type: string
         '500':
           description: Internal Server Error
           headers:
@@ -259,28 +556,257 @@ paths:
                 required: []
                 example:
                   example:
-                    meta:
-                      code: '500'
-                      type: Internal Server Error
-                      message: The request was error processed.
-                      error:
-                        - path: ''
-                          info: ''
-                    data: {}
+                    code: '000'
+                    type: Exception
+                    message: Message describing the error.
+                    user_title: A title.
+                    user_message: A message.
+                    details:
+                      - message: Message describing the error.
+                        user_title: A title.
+                        user_message: A message.
+                    validations:
+                      - field: name
+                        path: user.name
+                        tag: required
+                        param: ''
+                        value: ''
+                        message: the format of the data is not valid as required.
                 properties:
-                  meta:
-                    type: object
-                    allOf:
-                      - required: []
-                        properties:
-                          code:
-                            description: |
-                              error 500 
-                            type: string
-                          type:
-                            type: string
-                  data:
+                  code:
                     type: object
                     allOf:
                       - required: []
                         properties: {}
+                  type:
+                    description: |
+                      error 400 
+                    type: string
+                  message:
+                    type: string
+                  user_title:
+                    type: string
+                  user_message:
+                    type: string
+                  details:
+                    type: array
+                    items:
+                      required: []
+                      properties:
+                        message:
+                          type: string
+                        user_title:
+                          type: string
+                        user_message:
+                          type: string
+                  validations:
+                    type: array
+                    items:
+                      required: []
+                      properties:
+                        field:
+                          type: string
+                        path:
+                          type: string
+                        tag:
+                          type: string
+                        param:
+                          type: string
+                        value:
+                          type: string
+                        message:
+                          type: string
+  /pet/info/{id}/countries/{counties}/language/{language}:
+    delete:
+      tags:
+        - General
+      summary: Delete a pet infomation
+      description: create infomation of pet
+      parameters:
+        - name: id
+          in: path
+          schema: {}
+          required: true
+        - name: counties
+          in: path
+          schema:
+            type: string
+            default: tha
+            enum:
+              - tha
+              - eng
+            minimum: '10'
+            maximum: '100'
+          required: true
+          description: params
+          example: cba
+        - name: language
+          in: path
+          schema:
+            type: string
+            default: thai
+            enum:
+              - thai
+              - english
+            minimum: '1'
+            maximum: '10'
+          required: true
+          description: hello params
+          example: abc
+      responses:
+        '204':
+          description: No Content
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: Content-Type
+          content: {}
+        '400':
+          description: Bad Request
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: Content-Type
+          content:
+            application/json:
+              schema:
+                type: object
+                required: []
+                example:
+                  example:
+                    code: '000'
+                    type: Exception
+                    message: Message describing the error.
+                    user_title: A title.
+                    user_message: A message.
+                    details:
+                      - message: Message describing the error.
+                        user_title: A title.
+                        user_message: A message.
+                    validations:
+                      - field: name
+                        path: user.name
+                        tag: required
+                        param: ''
+                        value: ''
+                        message: the format of the data is not valid as required.
+                properties:
+                  code:
+                    type: object
+                    allOf:
+                      - required: []
+                        properties: {}
+                  type:
+                    description: |
+                      error 400 
+                    type: string
+                  message:
+                    type: string
+                  user_title:
+                    type: string
+                  user_message:
+                    type: string
+                  details:
+                    type: array
+                    items:
+                      required: []
+                      properties:
+                        message:
+                          type: string
+                        user_title:
+                          type: string
+                        user_message:
+                          type: string
+                  validations:
+                    type: array
+                    items:
+                      required: []
+                      properties:
+                        field:
+                          type: string
+                        path:
+                          type: string
+                        tag:
+                          type: string
+                        param:
+                          type: string
+                        value:
+                          type: string
+                        message:
+                          type: string
+        '500':
+          description: Internal Server Error
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: Content-Type
+          content:
+            application/json:
+              schema:
+                type: object
+                required: []
+                example:
+                  example:
+                    code: '000'
+                    type: Exception
+                    message: Message describing the error.
+                    user_title: A title.
+                    user_message: A message.
+                    details:
+                      - message: Message describing the error.
+                        user_title: A title.
+                        user_message: A message.
+                    validations:
+                      - field: name
+                        path: user.name
+                        tag: required
+                        param: ''
+                        value: ''
+                        message: the format of the data is not valid as required.
+                properties:
+                  code:
+                    type: object
+                    allOf:
+                      - required: []
+                        properties: {}
+                  type:
+                    description: |
+                      error 400 
+                    type: string
+                  message:
+                    type: string
+                  user_title:
+                    type: string
+                  user_message:
+                    type: string
+                  details:
+                    type: array
+                    items:
+                      required: []
+                      properties:
+                        message:
+                          type: string
+                        user_title:
+                          type: string
+                        user_message:
+                          type: string
+                  validations:
+                    type: array
+                    items:
+                      required: []
+                      properties:
+                        field:
+                          type: string
+                        path:
+                          type: string
+                        tag:
+                          type: string
+                        param:
+                          type: string
+                        value:
+                          type: string
+                        message:
+                          type: string
