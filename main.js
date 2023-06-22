@@ -9,7 +9,9 @@ const outputFile = './collection.yml'
 
 // Async/await
 try {
-    const result = postmanToOpenApi(postmanCollection, outputFile, { defaultTag: 'General' })
+    const result = postmanToOpenApi(postmanCollection, outputFile, {
+        defaultTag: 'General',
+    })
     // Without save the result in a file
     const result2 = postmanToOpenApi(postmanCollection, null, { defaultTag: 'General' })
     console.log(`OpenAPI specs: ${result}`)
